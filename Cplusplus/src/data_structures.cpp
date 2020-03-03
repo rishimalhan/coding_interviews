@@ -149,20 +149,20 @@
 
 // 	void BFS(std::vector<std::vector<int>> graph, int strt_node)
 // 	{
-// 		std::vector<bool> isVisited;
-// 		for (int i=0; i < graph.size(); ++i)
-// 		{
-// 			for (int j=0; j < graph[i].size(); ++j)
-// 			{
-// 				if (graph[i][j]>=isVisited.size())
-// 				{
-// 					isVisited.resize(graph[i][j]+1);
-// 					isVisited[graph[i][j]] = false;
-// 				}
-// 				else
-// 					isVisited[graph[i][j]] = false;
-// 			}
-// 		}
+		// std::vector<bool> isVisited;
+		// for (int i=0; i < graph.size(); ++i)
+		// {
+		// 	for (int j=0; j < graph[i].size(); ++j)
+		// 	{
+		// 		if (graph[i][j]>=isVisited.size())
+		// 		{
+		// 			isVisited.resize(graph[i][j]+1);
+		// 			isVisited[graph[i][j]] = false;
+		// 		}
+		// 		else
+		// 			isVisited[graph[i][j]] = false;
+		// 	}
+		// }
 
 // 		std::queue<int> q;
 // 		q.push(strt_node);
@@ -267,6 +267,8 @@ class tree
 {
 private:
 	binary_tree* root_node;
+	std::vector<bool> isVisited;
+	int no_nodes;
 public:
 	tree() {root_node = NULL;};
 
@@ -288,7 +290,34 @@ public:
 		node->parent = parent;
 
 	};
-	void printTree()
+	void init_visited()
+	{
+		no_nodes = 0;		
+		std::queue<binary_tree*> q;
+		q.push(root_node);
+		no_nodes+=1;
+		while(!q.empty())
+		{
+			binary_tree* temp = q.front(); q.pop();
+			if (temp->left)
+			{
+				q.push(temp->left);
+				no_nodes+=1;
+			}
+		
+			if (temp->right)
+			{
+				q.push(temp->right);
+				no_nodes+=1;
+			}
+			
+		}
+		std::cout<< "Number of nodes: " << no_nodes << std::endl;
+		isVisited.resize(no_nodes);
+		for (int i=0; i < no_nodes; ++i)
+			isVisited[i] = false;
+	};
+	void printLevelOrder()
 	{
 		std::queue<binary_tree*> q;
 
@@ -317,7 +346,65 @@ public:
 			std::cout<< std::endl;
 		};
 	};
+
+
+	void preorder_util(binary_tree* node)
+	{
+		if (!isVisited[node->data-1])
+		{
+			// print the current node
+			std::cout<< node->data << std::endl;
+			isVisited[node->data-1] = true;
+		}
+
+		if (node->left!=NULL)
+			preorder_util(node->left);
+		if (node->right!=NULL)
+			preorder_util(node->right);
+	}
+	void preorder() // nlr version of DFS
+	{
+		init_visited();
+		preorder_util(root_node);	
+	};
+
+	void inorder_util(binary_tree *node) //lnr
+	{
+		if (node->left!=NULL)
+			inorder_util(node->left);
+		if (!isVisited[node->data-1])
+		{
+			std::cout<< node->data << std::endl;
+			isVisited[node->data-1] = true;
+		}
+		if (node->right!=NULL)
+			inorder_util(node->right);
+	};
+	void inorder()
+	{
+		init_visited();
+		inorder_util(root_node);
+	};
+
+	void postorder_util(binary_tree* node)
+	{
+		if (node->left!=NULL)
+			postorder_util(node->left);
+		if (node->right!=NULL)
+			postorder_util(node->right);
+		if (!isVisited[node->data-1])
+		{
+			std::cout<< node->data << std::endl;
+			isVisited[node->data-1] = true;
+		}	
+	};
+	void postorder()
+	{
+		init_visited();
+		postorder_util(root_node);
+	};
 };
+
 
 int main(int argc, char** argv)
 {
@@ -347,16 +434,30 @@ int main(int argc, char** argv)
 	binary_tree* node3 = bin_tree.create_node(3);
 	binary_tree* node4 = bin_tree.create_node(4);
 	binary_tree* node5 = bin_tree.create_node(5);
-	binary_tree* node6 = bin_tree.create_node(6);
+	// binary_tree* node6 = bin_tree.create_node(6);
 	
-	bin_tree.addConnection(node1, NULL, node2, node3);
-	bin_tree.addConnection(node2, node1, node4, NULL);
-	bin_tree.addConnection(node3, node1, node5, node6);
+	// Some Tree-1
+	// bin_tree.addConnection(node1, NULL, node2, node3);
+	// bin_tree.addConnection(node2, node1, node4, NULL);
+	// bin_tree.addConnection(node3, node1, node5, node6);
 
-	bin_tree.printTree();
-	// std::cout<< node1->data << std::endl;
-	// std::cout<< node1->left->data << std::endl;
-	// std::cout<< node1->right->data << std::endl;
+
+	// Tree 2 and some traversals
+	bin_tree.addConnection(node1,NULL,node2,node3);
+	bin_tree.addConnection(node2,node1,node4,node5);
+	bin_tree.printLevelOrder();
+	std::cout<< "Preorder" << std::endl;
+	bin_tree.preorder();
+	std::cout<< std::endl<< std::endl;
+	std::cout<< "Inorder" << std::endl;
+	bin_tree.inorder();
+	std::cout<< std::endl<< std::endl;
+	std::cout<< "Postorder" << std::endl;
+	bin_tree.postorder();
+
+
+	// Tree -3
+	
 	return 0;
 }
 

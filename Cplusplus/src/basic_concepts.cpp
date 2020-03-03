@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <sstream>
+#include <string>
 // #include <bits/stdc++.h> 
 
 
@@ -321,36 +322,117 @@
 
 
 
-// Virtual functions
-// Primarily used for polymorphism.
-// Inherited class can use the same function name but a different function definition
-class area
-{
-public:
-	int compute_area(int a, int b)
-	{
-		return a*b;
-	}
-};
+// // Virtual functions
+// // Primarily used for polymorphism.
+// // Inherited class can use the same function name but a different function definition
+// class area
+// {
+// public:
+// 	int compute_area(int a, int b)
+// 	{
+// 		return a*b;
+// 	}
+// };
 
-class modf_area : public area
-{
-public:
-	int compute_area(int a, int b)
-	{
-		return 2*a*b;
-	}
-};
+// class modf_area : public area
+// {
+// public:
+// 	int compute_area(int a, int b)
+// 	{
+// 		return 2*a*b;
+// 	}
+// };
 
+// int main(int argc, char** argv)
+// {
+// 	area A;
+// 	std::cout<< A.compute_area(5,10) << std::endl;
+
+// 	modf_area B;
+// 	std::cout<< B.compute_area(5,10) << std::endl;	
+// 	return 0;
+// }
+
+
+
+
+
+
+
+// // Strings and char pointers
+// int main(int argc, char** argv)
+// {
+// 	std::string my_str = "hello";
+// 	int i=0;
+// 	while(my_str[i])
+// 	{
+// 		std::cout<< my_str[i] << std::endl;
+// 		++i;
+// 	}
+// 	// char ch[] = my_str;
+// 	// ch = &my_str;
+// 	return 0;
+// }
+
+
+
+
+
+// #include <queue>
+// // C++ priority queue
+// int main(int argc, char** argv)
+// {
+// 	std::priority_queue <std::pair<int,int>> q;
+// 	q.push(std::make_pair(10,1));
+// 	q.push(std::make_pair(20,2));
+// 	q.push(std::make_pair(5,3));
+
+// 	std::pair<int, int> top_elmnt = q.top(); 
+// 	std::cout<< top_elmnt.second << std::endl;
+// 	q.pop();
+// 	top_elmnt = q.top();
+// 	std::cout<< top_elmnt.second << std::endl;
+// 	q.pop();
+// 	return 0;
+// }
+
+
+
+
+
+// #include <map>
+// struct node
+// {
+// 	int data;
+// 	node* parent;
+// };
+
+// int main(int argc, char** argv)
+// {
+// 	node* root = new node;
+// 	root->data = 15;
+// 	root->parent = NULL;
+// 	std::map<int,node*> ord_map;
+// 	ord_map[0] = root;
+// 	return 0;
+// }
+
+
+
+
+
+
+#include <set>
 int main(int argc, char** argv)
 {
-	area A;
-	std::cout<< A.compute_area(5,10) << std::endl;
-
-	modf_area B;
-	std::cout<< B.compute_area(5,10) << std::endl;	
+	std::string str1 = "Hello";
+	std::set<char> s;
+	s.insert(str1[0]);
+	if (s.count('S'))
+		std::cout<< "Hello" << std::endl;
 	return 0;
 }
+
 
 
 

@@ -33,6 +33,46 @@
 // 	return 0;
 // }
 
+// Using vectors to store find and erase
+// int main(int argc, char** argv)
+// {
+// 	std::vector<char> v;
+// 	v.push_back('a');
+// 	v.push_back('b');
+// 	v.push_back('d');
+// 	v.push_back('c');
+// 	v.push_back('e');
+
+// 	v.erase(v.begin(),++std::find(v.begin(),v.end(),'d'));
+
+// 	for (int i=0; i<v.size(); ++i)
+// 		std::cout<< v[i] << " , ";
+// 	std::cout<< std::endl;
+// 	return 0;
+// }
+
+
+// // Vectors begin and end methods
+// #include <vector>
+// int main()
+// {
+// 	std::vector<int> int_vec;
+// 	int_vec.push_back(10);
+// 	int_vec.push_back(20);
+// 	int_vec.push_back(30);
+// 	int_vec.push_back(50);
+
+// 	std::cout<< *std::lower_bound(int_vec.begin(),int_vec.end(),12) << std::endl;
+// 	std::cout<< *std::upper_bound(int_vec.begin(),int_vec.end(),12) << std::endl;
+
+// 	auto it = std::lower_bound(int_vec.begin(),int_vec.end(),20);
+
+// 	std::cout<< it - int_vec.begin() << std::endl;
+// 	return 0;
+// }
+
+
+
 
 
 
@@ -64,7 +104,17 @@
 // 	std::cout<< a[2] << std::endl;
 // 	return 0;
 // }
-
+// void printArr(int arr[])
+// {
+// 	for (int i=0; i<5; ++i)
+// 		std::cout<< arr[i] << std::endl;
+// };
+// int main()
+// {
+// 	int arr[5] = {1,2,3,4,5};
+// 	printArr(arr);
+// 	return 0;
+// }
 
 
 
@@ -260,7 +310,19 @@
 // 	std::cout<< fuck['1'] << std::endl;
 // 	return 0;
 // }
-
+// #include <unordered_map>
+// int main()
+// {
+// 	std::unordered_map<int,int> map;
+// 	map.emplace(1,10);
+// 	map.emplace(3,20);
+// 	auto it = map.find(3);
+// 	if (map.count(3))
+// 		std::cout<< it->second << std::endl;
+// 	else
+// 		std::cout<< "Failed to find" << std::endl;
+// 	return 0;
+// }
 
 
 
@@ -354,6 +416,96 @@
 // }
 
 
+// #include <cmath>
+// #include <cstdio>
+// #include <vector>
+// #include <iostream>
+// #include <algorithm>
+// using namespace std;
+
+// class Person
+// {
+// public:
+//     std::string name;
+//     int age;
+//     virtual void getdata(){};
+//     virtual void putdata(){};
+// };
+
+// class Professor : public Person
+// {
+// public:
+//     int cur_id;
+//     int publications;
+//     static int global_ctr;
+//     Professor(){}
+//     void getdata()
+//     {
+//         global_ctr += 1;
+//         cur_id = global_ctr;
+//         std::cin>> name >> age >> publications;
+//     }
+//     void putdata()
+//     {
+//         std::cout<< name << " " << age << " " << publications << " " << cur_id << "\n";
+//     }
+// };
+// int Professor::global_ctr = 0;
+
+// class Student: public Person
+// {
+// public:
+//     int cur_id;
+//     int marks[6];
+//     static int global_ctr;
+//     Student(){}
+//     void getdata()
+//     {
+//         global_ctr += 1;
+//         cur_id = global_ctr;
+//         std::cin>> name >> age;
+//         for (int i=0; i<6; ++i)
+//             std::cin>> marks[i];
+//     }
+//     void putdata()
+//     {
+//         int sum = 0;
+//         for (int i=0; i<6; ++i)
+//             sum += marks[i];
+//         std::cout<< name << " " << age << " " << sum << " " << cur_id << "\n";
+//     }
+// };
+// int Student::global_ctr = 0;
+// int main(){
+
+//     int n, val;
+//     cin>>n; //The number of objects that is going to be created.
+//     Person *per[n];
+
+//     for(int i = 0;i < n;i++){
+
+//         cin>>val;
+//         if(val == 1){
+//             // If val is 1 current object is of type Professor
+//             per[i] = new Professor;
+
+//         }
+//         else per[i] = new Student; // Else the current object is of type Student
+
+//         per[i]->getdata(); // Get the data from the user.
+
+//     }
+
+//     for(int i=0;i<n;i++)
+//         per[i]->putdata(); // Print the required output for each object.
+
+//     return 0;
+
+// }
+
+
+
+
 
 
 
@@ -396,6 +548,30 @@
 // 	return 0;
 // }
 
+// #include <queue>
+// int main(){
+// 	std::priority_queue<int> q;
+// 	q.push(10);
+// 	q.push(20);
+// 	q.push(5);
+// 	std::cout<< q.top() << std::endl;
+// 	q = std::priority_queue<int>();
+// 	std::cout<< q.size() << std::endl;
+// 	return 0;
+// }
+
+// deque does not sort the elements. they stay as it is
+// #include <deque>
+// int main(){
+// 	std::deque<int> q;
+// 	q.push_front(0);
+// 	q.push_front(1);
+// 	q.push_front(2);
+// 	std::cout<< q.size() << std::endl;
+// 	int i = q.at(0);
+// 	std::cout<< q.size() << std::endl;
+// 	return 0;
+// }
 
 
 
@@ -422,16 +598,41 @@
 
 
 
-#include <set>
-int main(int argc, char** argv)
-{
-	std::string str1 = "Hello";
-	std::set<char> s;
-	s.insert(str1[0]);
-	if (s.count('S'))
-		std::cout<< "Hello" << std::endl;
-	return 0;
-}
+// #include <set>
+// int main(int argc, char** argv)
+// {
+// 	// std::string str1 = "Hello";
+// 	// std::set<char> s;
+// 	// s.insert(str1[0]);
+// 	// if (s.count('S'))
+// 	// 	std::cout<< "Hello" << std::endl;
+
+// 	std::set<char> s;
+// 	s.insert('a');
+// 	s.insert('b');
+// 	s.insert('d');
+// 	s.insert('c');
+
+// 	std::cout << "The elements in set are: "; 
+//     for (auto it = s.begin(); it != s.end(); it++) 
+//         std::cout << *it << " ";
+
+// 	// Find a specific index
+// 	// auto it = s.find('a');
+// 	// std::cout<< *it << std::endl;
+
+// 	// Erase a range of elements
+// 	// s.erase(s.begin(),s.find('b'));
+// 	// std::cout<< s.size() << std::endl;
+
+// 	// std::set<char>::iterator it1 = s.find('a');
+// 	// std::set<char>::iterator it2 = s.find('c');
+// 	// s.erase(it1,++it2);
+// 	// std::cout<< s.size() << std::endl;
+// 	// std::set<char>::iterator it3 = s.begin();
+// 	// std::cout<< *it3 << std::endl;
+// 	return 0;
+// }
 
 
 

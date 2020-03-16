@@ -456,7 +456,7 @@ int main(int argc, char** argv)
 	bin_tree.postorder();
 
 
-	// Tree -3
+	// Tree 3
 	
 	return 0;
 }

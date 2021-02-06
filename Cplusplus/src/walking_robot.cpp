@@ -92,3 +92,8 @@ public:
         return (pow( rob_pose.x,2 )+pow( rob_pose.y,2 ));
     }
 };
+
+
+
+
+Clustering and classification are both used to categorise objects. The basic difference is that for classification, the classes/labels are pre-defined for each object/data-point. In clustering you find the classes Classification is supervises while clustering is generally unsupervised 

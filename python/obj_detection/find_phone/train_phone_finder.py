@@ -15,12 +15,15 @@ def main(path,params):
     # path: type: str, func: path to the data 
     # params: type: dictionary, func: parameter values to be used in algorithm
     
+    print("Reading the data from files and parsing it into custom data structures")
     data = data_handler.read_data(path,params)
+    print("Preprocessing all Images")
     img_utils.preprocess_images(data)
     
-    # data_handler.prepare_datasets( data,params )
-    (training_set,testing_set) = data_handler.prepare_datasets( data,params )    
+    print("Training the classifier to distinguish between images with and without phone")
+    (training_set,testing_set) = data_handler.prepare_datasets( data,params )
     clf = classifiers.logistic_regression(training_set[0],training_set[1])
+    print("Checking model accuracies")
     model_analysis.model_accuracy(clf,testing_set[0],testing_set[1])
     model_analysis.alg_accuracy(clf,params,data)
 

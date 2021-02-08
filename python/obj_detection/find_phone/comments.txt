@@ -25,3 +25,6 @@ work on that and tune the parameters for optimum performance
 The code can further be optimized by biasing the creation of windows towards regions
 which actually have the phone. So next steps would be to create this bias using
 contour detection algorithms, etc
+
+Use other preprocessors besides Grey scale, such as adding gaussian blur to images
+or using HSV filter and tuning the values to check sensitivity of the algorithm

@@ -1,0 +1,7 @@
+# yaml file for defining the parameters to be used for phone detection
+
+training_fraction: &training_fraction 0.8 # Images to be used for training
+normalized_half_phone_box_length: 0.1 # Normalized image length of a box which encloses the phone
+dataset_ratio: 10 # Ratio of images without phone to images with phone
+dwnsample_hght: 30
+dwnsample_width: 30

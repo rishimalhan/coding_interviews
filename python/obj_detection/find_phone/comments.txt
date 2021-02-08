@@ -1,1 +1,27 @@
-I ran the algorithm a few times and noticed that for most of the runs, the accuracy on data set provided is over 85%. However, for one run it fell down to 79%. This is likely due to randomness involved in generating windows not containing the phone and also the randomness in selecting the training data set. There are certainly some images which are creating a challenge for the algorithm so I'd like to display such images and see why the challenge exists in the future to improve performance.
+Algorithm: 
+-Create an axis aligned window around the center of the phone as
+obtained from the labels This window contains the phone and is labeled 1
+-Create n random centers within the image and generate n windows of same size
+and label them 0 
+-Run a classifier on this data 
+-For a query image, create windows around k uniform samples on a grid and query the classifier for each
+window and store the probability of the window having the phone
+-Find window with highest probability and it's corresponding center is the answer
+
+ToDo:
+I ran the algorithm a few times and noticed that for most of the runs, the
+accuracy on data set provided is over 85%. However, for one run it fell down
+to 79%. This is likely due to randomness involved in generating windows not
+containing the phone and also the randomness in selecting the training data
+set. There are certainly some images which are creating a challenge for the
+algorithm so I'd like to display such images and see why the challenge exists
+in the future to improve performance.
+
+I would use other classifiers available to predict probabilites
+
+Config file makes it easier to play with different parameters so I would
+work on that and tune the parameters for optimum performance
+
+The code can further be optimized by biasing the creation of windows towards regions
+which actually have the phone. So next steps would be to create this bias using
+contour detection algorithms, etc

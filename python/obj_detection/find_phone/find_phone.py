@@ -35,10 +35,6 @@ if __name__=='__main__':
     with open(model_path, 'rb') as model_file:
         clf = pickle.load(model_file)
 
-    data_path = os.path.join(os.path.abspath(os.path.curdir),"data.pickle")
-    with open(data_path, 'rb') as data_file:
-        data = pickle.load(data_file)
-
     img = cv2.imread(img_path)
     img = img_utils.preprocess_img(img)
     center = find_phone(clf, params, img)

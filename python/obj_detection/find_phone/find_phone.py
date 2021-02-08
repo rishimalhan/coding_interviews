@@ -7,6 +7,8 @@ import pickle
 import numpy as np
 
 def find_phone(clf, params, img):
+    # Use the classifier model to predict probabilites over the different windows 
+    # generated over test image and pick center of the one with maximum probability
     (centers,windows) = img_utils.create_windows(params,img)
     probs = clf.predict_proba( windows )[:,1]
     return centers[np.argmax( probs )]

@@ -2,7 +2,9 @@ import find_phone
 from sklearn.metrics import accuracy_score
 import numpy as np
 
+
 def alg_accuracy(clf, params, data):
+    # Check the accuracy of the algorithm on the entire data set by predicting the centers and finding norm from labels
     pred_centers = []
     true_center = []
     for key in data['img_list'].keys():
@@ -19,6 +21,7 @@ def alg_accuracy(clf, params, data):
 
 
 def model_accuracy(clf,X,true_y):
+    # Check accuracy of the model used to classify images with phone and without phone
     y = clf.predict(X)
     accuracy_score(true_y,y)
     print("\n")

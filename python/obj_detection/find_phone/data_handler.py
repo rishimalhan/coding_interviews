@@ -8,6 +8,12 @@ import img_utils
 import model_analysis
 
 def read_data(folder_path,params):
+    # Inputs:
+    # folder_path: type: str, func: path to the data
+    # params: type: dictionary, func: parameter values to be used in algorithm
+    # Output:
+    # data: type: dictionary, func: provide all images and corresponding image ids, training and test ids and labels
+
     image_paths = glob(folder_path + '/*.jpg')
     image_list = {}
     image_ids = np.array([],dtype=int)
@@ -43,6 +49,11 @@ def read_data(folder_path,params):
 
 
 def prepare_datasets(data,params):
-    # img_utils.prep_XY_set(data,params,np.array([83]))
+    # Inputs:
+    # data: type: dictionary, func: provide all images and corresponding image ids, training and test ids and labels
+    # We use the data for generating training and testing data set
+    # Outputs:
+    # Function returns a tuple of training and testing data sets
+    # training and testing data set is in turn a tuple of np array of flattened image and corresponding label
     return (img_utils.prep_XY_set(data,params,data['train_ids']),
                 img_utils.prep_XY_set(data,params,data['test_ids']))

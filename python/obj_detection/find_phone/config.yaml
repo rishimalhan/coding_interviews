@@ -5,3 +5,5 @@ normalized_half_phone_box_length: 0.1 # Normalized image length of a box which e
 dataset_ratio: 10 # Ratio of images without phone to images with phone
 dwnsample_hght: 30
 dwnsample_width: 30
+numb_windows_sampled: 50
+viol_thresh: 0.05

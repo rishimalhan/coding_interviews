@@ -1,0 +1,11 @@
+hydra-core
+numpy
+opencv-python
+onnxruntime
+omegaconf
+scikit-learn
+torch
+torchvision
+tqdm
+transformers
+wandb

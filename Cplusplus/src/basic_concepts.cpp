@@ -6,7 +6,7 @@
 
 
 
-// Trying character pointer
+// // Trying character pointer
 // int main(int argc, char** argv)
 // {
 // 	char *c;
@@ -17,6 +17,18 @@
 // }
 
 
+
+// // Trying character pointer
+// int main(int argc, char** argv){
+// 	for (int i=1; i<argc; i++)
+// 		std::cout<< "Argument number: " << i+1 << " is: " << argv[i][0] << std::endl;
+// 	int** p = NULL;
+// 	int * f = NULL;
+// 	int c = 12;
+// 	f = &c;
+// 	p = &f;
+// 	std::cout<< "Character obtained is: " << **p << std::endl;
+// }
 
 
 
@@ -33,7 +45,7 @@
 // 	return 0;
 // }
 
-// Using vectors to store find and erase
+// // Using vectors to store find and erase
 // int main(int argc, char** argv)
 // {
 // 	std::vector<char> v;
@@ -42,7 +54,8 @@
 // 	v.push_back('d');
 // 	v.push_back('c');
 // 	v.push_back('e');
-
+// 	// First getting the index
+// 	std::cout<< std::find(v.begin(),v.end(),'d')-v.begin() << "\n";
 // 	v.erase(v.begin(),++std::find(v.begin(),v.end(),'d'));
 
 // 	for (int i=0; i<v.size(); ++i)
@@ -310,6 +323,8 @@
 // 	std::cout<< fuck['1'] << std::endl;
 // 	return 0;
 // }
+
+
 // #include <unordered_map>
 // int main()
 // {

@@ -1,0 +1,3 @@
+"""
+Chef Interview package initialization
+"""

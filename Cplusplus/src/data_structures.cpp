@@ -1,4 +1,6 @@
 #include <iostream>
+
+
 // #include <list>
 
 // // Lists. Check methods in geeks for geeks
@@ -27,7 +29,15 @@
 
 
 
+class GraphSearches
+{
+private:
+	void GraphSearches(){
+		std::vector<int> graph;
+	}
+	
 
+}
 
 
 
@@ -253,213 +263,213 @@
 
 
 
-// Binary trees
-#include <queue>
-struct binary_tree
-{
-	int data;
-	binary_tree* left;
-	binary_tree* right;
-	binary_tree* parent;
-};
+// // Binary trees
+// #include <queue>
+// struct binary_tree
+// {
+// 	int data;
+// 	binary_tree* left;
+// 	binary_tree* right;
+// 	binary_tree* parent;
+// };
 
-class tree
-{
-private:
-	binary_tree* root_node;
-	std::vector<bool> isVisited;
-	int no_nodes;
-public:
-	tree() {root_node = NULL;};
+// class tree
+// {
+// private:
+// 	binary_tree* root_node;
+// 	std::vector<bool> isVisited;
+// 	int no_nodes;
+// public:
+// 	tree() {root_node = NULL;};
 
-	binary_tree* create_node(int _data)
-	{
-		binary_tree* node = new binary_tree;
-		node->data = _data;
-		node->parent = NULL;
-		node->left = NULL;
-		node->right = NULL;
-		return node;
-	};
-	void addConnection(binary_tree* node, binary_tree* parent, binary_tree* left_child, binary_tree* right_child)
-	{
-		if (!root_node)
-			root_node = node;
-		node->left = left_child;
-		node->right = right_child;
-		node->parent = parent;
+// 	binary_tree* create_node(int _data)
+// 	{
+// 		binary_tree* node = new binary_tree;
+// 		node->data = _data;
+// 		node->parent = NULL;
+// 		node->left = NULL;
+// 		node->right = NULL;
+// 		return node;
+// 	};
+// 	void addConnection(binary_tree* node, binary_tree* parent, binary_tree* left_child, binary_tree* right_child)
+// 	{
+// 		if (!root_node)
+// 			root_node = node;
+// 		node->left = left_child;
+// 		node->right = right_child;
+// 		node->parent = parent;
 
-	};
-	void init_visited()
-	{
-		no_nodes = 0;		
-		std::queue<binary_tree*> q;
-		q.push(root_node);
-		no_nodes+=1;
-		while(!q.empty())
-		{
-			binary_tree* temp = q.front(); q.pop();
-			if (temp->left)
-			{
-				q.push(temp->left);
-				no_nodes+=1;
-			}
+// 	};
+// 	void init_visited()
+// 	{
+// 		no_nodes = 0;		
+// 		std::queue<binary_tree*> q;
+// 		q.push(root_node);
+// 		no_nodes+=1;
+// 		while(!q.empty())
+// 		{
+// 			binary_tree* temp = q.front(); q.pop();
+// 			if (temp->left)
+// 			{
+// 				q.push(temp->left);
+// 				no_nodes+=1;
+// 			}
 		
-			if (temp->right)
-			{
-				q.push(temp->right);
-				no_nodes+=1;
-			}
+// 			if (temp->right)
+// 			{
+// 				q.push(temp->right);
+// 				no_nodes+=1;
+// 			}
 			
-		}
-		std::cout<< "Number of nodes: " << no_nodes << std::endl;
-		isVisited.resize(no_nodes);
-		for (int i=0; i < no_nodes; ++i)
-			isVisited[i] = false;
-	};
-	void printLevelOrder()
-	{
-		std::queue<binary_tree*> q;
+// 		}
+// 		std::cout<< "Number of nodes: " << no_nodes << std::endl;
+// 		isVisited.resize(no_nodes);
+// 		for (int i=0; i < no_nodes; ++i)
+// 			isVisited[i] = false;
+// 	};
+// 	void printLevelOrder()
+// 	{
+// 		std::queue<binary_tree*> q;
 
-		q.push(root_node);
-		while(!q.empty())
-		{
-			binary_tree* temp = q.front(); q.pop();
-			if (!temp->left && !temp->right)
-			{
-				std::cout<< "Leaf Node: " << temp->data << std::endl;
-				continue;
-			}
+// 		q.push(root_node);
+// 		while(!q.empty())
+// 		{
+// 			binary_tree* temp = q.front(); q.pop();
+// 			if (!temp->left && !temp->right)
+// 			{
+// 				std::cout<< "Leaf Node: " << temp->data << std::endl;
+// 				continue;
+// 			}
 
-			std::cout<< "Parent: " << temp->data << " Children: ";
-			if (temp->left)
-			{
-				std::cout<< "Left: " << temp->left->data << " ";
-				q.push(temp->left);
-			}
+// 			std::cout<< "Parent: " << temp->data << " Children: ";
+// 			if (temp->left)
+// 			{
+// 				std::cout<< "Left: " << temp->left->data << " ";
+// 				q.push(temp->left);
+// 			}
 		
-			if (temp->right)
-			{
-				std::cout<< "Right: " << temp->right->data << " ";
-				q.push(temp->right);
-			}
-			std::cout<< std::endl;
-		};
-	};
+// 			if (temp->right)
+// 			{
+// 				std::cout<< "Right: " << temp->right->data << " ";
+// 				q.push(temp->right);
+// 			}
+// 			std::cout<< std::endl;
+// 		};
+// 	};
 
 
-	void preorder_util(binary_tree* node)
-	{
-		if (!isVisited[node->data-1])
-		{
-			// print the current node
-			std::cout<< node->data << std::endl;
-			isVisited[node->data-1] = true;
-		}
+// 	void preorder_util(binary_tree* node)
+// 	{
+// 		if (!isVisited[node->data-1])
+// 		{
+// 			// print the current node
+// 			std::cout<< node->data << std::endl;
+// 			isVisited[node->data-1] = true;
+// 		}
 
-		if (node->left!=NULL)
-			preorder_util(node->left);
-		if (node->right!=NULL)
-			preorder_util(node->right);
-	}
-	void preorder() // nlr version of DFS
-	{
-		init_visited();
-		preorder_util(root_node);	
-	};
+// 		if (node->left!=NULL)
+// 			preorder_util(node->left);
+// 		if (node->right!=NULL)
+// 			preorder_util(node->right);
+// 	}
+// 	void preorder() // nlr version of DFS
+// 	{
+// 		init_visited();
+// 		preorder_util(root_node);	
+// 	};
 
-	void inorder_util(binary_tree *node) //lnr
-	{
-		if (node->left!=NULL)
-			inorder_util(node->left);
-		if (!isVisited[node->data-1])
-		{
-			std::cout<< node->data << std::endl;
-			isVisited[node->data-1] = true;
-		}
-		if (node->right!=NULL)
-			inorder_util(node->right);
-	};
-	void inorder()
-	{
-		init_visited();
-		inorder_util(root_node);
-	};
+// 	void inorder_util(binary_tree *node) //lnr
+// 	{
+// 		if (node->left!=NULL)
+// 			inorder_util(node->left);
+// 		if (!isVisited[node->data-1])
+// 		{
+// 			std::cout<< node->data << std::endl;
+// 			isVisited[node->data-1] = true;
+// 		}
+// 		if (node->right!=NULL)
+// 			inorder_util(node->right);
+// 	};
+// 	void inorder()
+// 	{
+// 		init_visited();
+// 		inorder_util(root_node);
+// 	};
 
-	void postorder_util(binary_tree* node)
-	{
-		if (node->left!=NULL)
-			postorder_util(node->left);
-		if (node->right!=NULL)
-			postorder_util(node->right);
-		if (!isVisited[node->data-1])
-		{
-			std::cout<< node->data << std::endl;
-			isVisited[node->data-1] = true;
-		}	
-	};
-	void postorder()
-	{
-		init_visited();
-		postorder_util(root_node);
-	};
-};
-
-
-int main(int argc, char** argv)
-{
-
-	// Option-1
-	// binary_tree node1;
-	// binary_tree node2;
-	// binary_tree node3;
-	// node1.data = 1;
-	// node2.data = 2;
-	// node3.data = 3;
-
-	// node1.left = &node2;
-	// node1.right = &node3;
-	// node1.parent = &node1;
-
-	// std::cout<< node1.left->data << std::endl;
-	// std::cout<< node1.right->data << std::endl;
-	// std::cout<< node1.parent->data << std::endl;
+// 	void postorder_util(binary_tree* node)
+// 	{
+// 		if (node->left!=NULL)
+// 			postorder_util(node->left);
+// 		if (node->right!=NULL)
+// 			postorder_util(node->right);
+// 		if (!isVisited[node->data-1])
+// 		{
+// 			std::cout<< node->data << std::endl;
+// 			isVisited[node->data-1] = true;
+// 		}	
+// 	};
+// 	void postorder()
+// 	{
+// 		init_visited();
+// 		postorder_util(root_node);
+// 	};
+// };
 
 
-	// Option-2. Creating memory in the heap. We can keep creating pointers to different nodes and then write a function to add edge
-	// which basically adds connection pointing the parent to the child.
-	tree bin_tree;
-	binary_tree* node1 = bin_tree.create_node(1);
-	binary_tree* node2 = bin_tree.create_node(2);
-	binary_tree* node3 = bin_tree.create_node(3);
-	binary_tree* node4 = bin_tree.create_node(4);
-	binary_tree* node5 = bin_tree.create_node(5);
-	// binary_tree* node6 = bin_tree.create_node(6);
+// int main(int argc, char** argv)
+// {
+
+// 	// Option-1
+// 	// binary_tree node1;
+// 	// binary_tree node2;
+// 	// binary_tree node3;
+// 	// node1.data = 1;
+// 	// node2.data = 2;
+// 	// node3.data = 3;
+
+// 	// node1.left = &node2;
+// 	// node1.right = &node3;
+// 	// node1.parent = &node1;
+
+// 	// std::cout<< node1.left->data << std::endl;
+// 	// std::cout<< node1.right->data << std::endl;
+// 	// std::cout<< node1.parent->data << std::endl;
+
+
+// 	// Option-2. Creating memory in the heap. We can keep creating pointers to different nodes and then write a function to add edge
+// 	// which basically adds connection pointing the parent to the child.
+// 	tree bin_tree;
+// 	binary_tree* node1 = bin_tree.create_node(1);
+// 	binary_tree* node2 = bin_tree.create_node(2);
+// 	binary_tree* node3 = bin_tree.create_node(3);
+// 	binary_tree* node4 = bin_tree.create_node(4);
+// 	binary_tree* node5 = bin_tree.create_node(5);
+// 	// binary_tree* node6 = bin_tree.create_node(6);
 	
-	// Some Tree-1
-	// bin_tree.addConnection(node1, NULL, node2, node3);
-	// bin_tree.addConnection(node2, node1, node4, NULL);
-	// bin_tree.addConnection(node3, node1, node5, node6);
+// 	// Some Tree-1
+// 	// bin_tree.addConnection(node1, NULL, node2, node3);
+// 	// bin_tree.addConnection(node2, node1, node4, NULL);
+// 	// bin_tree.addConnection(node3, node1, node5, node6);
 
 
-	// Tree 2 and some traversals
-	bin_tree.addConnection(node1,NULL,node2,node3);
-	bin_tree.addConnection(node2,node1,node4,node5);
-	bin_tree.printLevelOrder();
-	std::cout<< "Preorder" << std::endl;
-	bin_tree.preorder();
-	std::cout<< std::endl<< std::endl;
-	std::cout<< "Inorder" << std::endl;
-	bin_tree.inorder();
-	std::cout<< std::endl<< std::endl;
-	std::cout<< "Postorder" << std::endl;
-	bin_tree.postorder();
+// 	// Tree 2 and some traversals
+// 	bin_tree.addConnection(node1,NULL,node2,node3);
+// 	bin_tree.addConnection(node2,node1,node4,node5);
+// 	bin_tree.printLevelOrder();
+// 	std::cout<< "Preorder" << std::endl;
+// 	bin_tree.preorder();
+// 	std::cout<< std::endl<< std::endl;
+// 	std::cout<< "Inorder" << std::endl;
+// 	bin_tree.inorder();
+// 	std::cout<< std::endl<< std::endl;
+// 	std::cout<< "Postorder" << std::endl;
+// 	bin_tree.postorder();
 
 
-	// Tree 3
+// 	// Tree 3
 	
-	return 0;
-}
+// 	return 0;
+// }
 
 
 

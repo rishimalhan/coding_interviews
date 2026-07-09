@@ -1,0 +1,32 @@
+# System configuration
+
+camera_name: "realsense_d415"
+
+# Camera properties for all cameras
+
+# retreive via SDK: rs-enumerate-devices -c
+# Values filled as dummy
+realsense_d415:
+  local_path_to_image: "data/sample_rgbd_image.npy"
+
+  intrinsics:
+    fx: 525.0
+    fy: 525.0
+    x0: 319.5
+    y0: 239.5
+    s: 0.0 # Skew for digital cameras is ~0
+
+  extrinsics:
+    translation: [0.0, 0.0, 0.0]
+    rotation:
+      - [1.0, 0.0, 0.0]
+      - [0.0, 1.0, 0.0]
+      - [0.0, 0.0, 1.0]
+
+controller_name: "2dof_polishing"
+
+2dof_polishing:
+  link_lengths: [1.0, 1.0]  # meters
+  gains:
+    k_p: 80.0  # velocity control gain
+    k_f: 2.0   # force control gain

@@ -1,4 +1,154 @@
 import sys
+from typing import Union
+import math
+
+
+class CircularBuffer:
+    def __init__(self, max_capacity):
+        self._max_capacity = max_capacity
+        self._head = 0
+        self._tail = 0
+        self._size = 0
+        self._buffer = [None] * self._max_capacity
+
+    def size(self):
+        return self._size
+
+    def full(self):
+        return self.size() == self._max_capacity
+
+    def push_back(self, value: Union[int, float]):
+        if self.full():
+            self._buffer[self._head] = None
+            self._head = (self._head + 1) % self._max_capacity
+        else:
+            self._size += 1
+        self._buffer[self._tail] = value
+        self._tail = (self._tail + 1) % self._max_capacity
+
+    def pop_back(self):
+        value = self._buffer[self._head]
+        self._buffer[self._head] = None
+        self._head = (self._head + 1) % self._max_capacity
+        self._size -= 1
+        return value
+
+    def pop_front(self):
+        value = self._buffer[self._tail]
+        self._buffer[self._tail] = None
+        self._tail = (self._tail + 1) % self._max_capacity
+        self._size -= 1
+        return value
+
+
+# # DP- Longest sub list
+# array = [1,8,4,2,7,3,7,5,3,7,9,12]
+
+# def sequence(arr, sol_arr):
+# 	if len(arr) == 0:
+# 		return sol_arr
+
+# 	excl = sequence(arr[1:], sol_arr)
+# 	incl = []
+# 	if len(sol_arr)==0 or arr[0] > sol_arr[-1]:
+# 		sol_arr = sol_arr + [arr[0]]
+# 		incl = sequence(arr[1:], sol_arr)
+
+# 	if len(excl) > len(incl):
+# 		return excl
+# 	else:
+# 		return incl
+
+# print( sequence(array, []) )
+
+# import queue
+# class Graph:
+# 	def __init__(self):
+# 		self.graph = dict()
+# 		self.node_ids = set()
+# 		self.is_visited = set()
+
+# 	def insert_edge(self,parent,children):
+# 		if parent not in self.node_ids:
+# 			self.node_ids.add(parent)
+# 			self.graph[parent] = []
+# 		for child in children:
+# 			self.graph[parent].append(child)
+
+# 	def BFS(self, root):
+# 		self.is_visited = set()
+# 		q = queue.Queue()
+# 		q.put(root)
+# 		while not q.empty():
+# 			parent = q.get()
+# 			if parent in self.is_visited:
+# 				continue
+# 			self.is_visited.add(parent)
+# 			if parent in self.node_ids:
+# 				children = self.graph[parent]
+# 				for child in children:
+# 					q.put(child)
+# 					print(child)
+
+# 	def DFS_util(self,q):
+# 		parent = q.pop()
+# 		if parent in self.is_visited:
+# 			return
+# 		self.is_visited.add(parent)
+# 		if parent in self.node_ids:
+# 			children = self.graph[parent]
+# 			for child in children:
+# 				q.append(child)
+# 				print(child)
+# 				self.DFS_util(q)
+
+# 	def DFS(self,root):
+# 		q = []
+# 		q.append(root)
+# 		self.is_visited = set()
+# 		self.DFS_util(q)
+
+
+# g = Graph()
+# g.insert_edge(0,[1,2,3])
+# g.insert_edge(1,[4])
+# g.insert_edge(2,[4,5,6])
+# g.insert_edge(3,[5,6])
+# g.insert_edge(5,[7,8])
+# g.insert_edge(6,[8])
+
+# # g.BFS(0)
+# g.DFS(0)
+
+# class node:
+# 	def __init__(self,data):
+# 		self.data = data
+# 		self.next_node = None
+
+# class ll:
+# 	def __init__(self):
+# 		self.head = None
+# 		self.tail = None
+
+# 	def insert_node(self,data):
+# 		new_node = node(data)
+# 		if self.head is None:
+# 			self.head = new_node
+# 			self.tail = new_node
+# 		else:
+# 			self.tail.next_node = new_node
+# 			self.tail = new_node
+
+# linked_list = ll()
+# linked_list.insert_node(1)
+# linked_list.insert_node(2)
+# linked_list.insert_node(3)
+# linked_list.insert_node(4)
+
+# current_node = linked_list.head
+# while current_node.next_node != None:
+# 	print(current_node.data)
+# 	current_node = current_node.next_node
 
 
 # Simple class and object
@@ -15,9 +165,6 @@ import sys
 # a = student("xyz","abc")
 # a.logger()
 # student.logger(a)
-
-
-
 
 
 # LINKED lists
@@ -56,9 +203,6 @@ import sys
 # print(nodes3.child)
 
 
-
-
-
 # # Python LISTS
 # # a = [1,2,3,4]
 # # b = [[1,2,3],[4,5,6]] # Multi dimensional list
@@ -82,7 +226,7 @@ import sys
 
 # b = [1,2,3,4]
 # b.insert(1,5) # This will append element at 1 position so new list will be 1,5,2,3,4
-# print(b) 
+# print(b)
 
 # # Extend([elements]) method appends multiple elements at the end
 # a = [1,2]
@@ -106,13 +250,6 @@ import sys
 # print(a[2:5])
 
 # # reverse, sort, count, and copy are other useful methods
-
-
-
-
-
-
-
 
 
 # from collections import defaultdict
@@ -146,13 +283,12 @@ import sys
 # 	return
 
 
-
 # if __name__ == '__main__':
 # 	g = Graph()
-	# g.addEdge(0, 1) 
-	# g.addEdge(0, 2) 
-	# g.addEdge(1, 2) 
-	# g.addEdge(2, 0) 
-	# g.addEdge(2, 3) 
-	# g.addEdge(3, 3)
+# g.addEdge(0, 1)
+# g.addEdge(0, 2)
+# g.addEdge(1, 2)
+# g.addEdge(2, 0)
+# g.addEdge(2, 3)
+# g.addEdge(3, 3)
 # 	BFS(g,2)

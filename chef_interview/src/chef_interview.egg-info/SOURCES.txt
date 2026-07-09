@@ -1,0 +1,11 @@
+README.md
+setup.py
+src/chef_interview/__init__.py
+src/chef_interview/simulated_controller.py
+src/chef_interview/simulated_perception.py
+src/chef_interview/utils.py
+src/chef_interview.egg-info/PKG-INFO
+src/chef_interview.egg-info/SOURCES.txt
+src/chef_interview.egg-info/dependency_links.txt
+src/chef_interview.egg-info/top_level.txt
+tests/test_simulated_perception.py
